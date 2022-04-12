@@ -33,5 +33,5 @@ jobs:
       - name: "Test if publishing works"
         run: GRADLE_USER_HOME=$HOME/.gradle ./gradlew publishToMavenLocal --console=plain --no-daemon --stacktrace
       - name: "Tag release"
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         run: GRADLE_USER_HOME=$HOME/.gradle ./gradlew tagRelease --console=plain --no-daemon
