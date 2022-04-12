@@ -29,8 +29,12 @@ idea.project {
     targetBytecodeVersion = JavaVersion.VERSION_11
 }
 
-sourceCompatibility = JavaVersion.VERSION_11
-targetCompatibility = JavaVersion.VERSION_11
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+    withSourcesJar()
+    withJavadocJar()
+}
 
 def grpcVersion = '1.45.1'
 def protobufVersion = '3.19.2'
