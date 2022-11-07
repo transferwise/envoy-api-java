@@ -1,7 +1,6 @@
 .idea
 *.iml
 build
-logs
 *.log
 .gradle
 application.pid
