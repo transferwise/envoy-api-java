@@ -4,8 +4,8 @@ ENVOY_SHA="v1.18.4"
 
 # dependencies (source: https://github.com/envoyproxy/envoy/blob/ENVOYSHA/api/bazel/repository_locations.bzl)
 GOOGLEAPIS_SHA="82944da21578a53b74e547774cf62ed31a05b841"  # actually 'version'
-OPENCENSUS_SHA="v0.3.0"
-PGV_GIT_SHA="9db8e779b46119eef7d67e3d1120c118d593611c"
+PGV_VERSION="9db8e779b46119eef7d67e3d1120c118d593611c"
 PROMETHEUS_SHA="60555c9708c786597e6b07bf846d0dc5c2a46f54"
-# NB: renamed to xDS API in the source
+OPENCENSUS_VERSION="0.3.0"  # 2022-09-22
+OPENTELEMETRY_VERSION="0.7.0"
 UDPA_SHA="b88cc788a63e5b38ee334a2e702c67901355ae2c"
