@@ -51,6 +51,15 @@ message Endpoint {
     //
     //   The form of the health check host address is expected to be a direct IP address.
     core.v3.Address address = 3;
+
+    // Optional flag to control if perform active health check for this endpoint.
+    // Active health check is enabled by default if there is a health checker.
+    bool disable_active_health_check = 4;
+  }
+
+  message AdditionalAddress {
+    // Additional address that is associated with the endpoint.
+    core.v3.Address address = 1;
   }
 
   // The upstream host address.
@@ -78,6 +87,13 @@ message Endpoint {
   // that require a hostname, like
   // :ref:`auto_host_rewrite <envoy_v3_api_field_config.route.v3.RouteAction.auto_host_rewrite>`.
   string hostname = 3;
+
+  // An ordered list of addresses that together with ``address`` comprise the
+  // list of addresses for an endpoint. The address given in the ``address`` is
+  // prepended to this list. It is assumed that the list must already be
+  // sorted by preference order of the addresses. This will only be supported
+  // for STATIC and EDS clusters.
+  repeated AdditionalAddress additional_addresses = 4;
 }
 
 // An Endpoint that Envoy can route traffic to.
@@ -178,9 +194,9 @@ message LocalityLbEndpoints {
   // default to the highest priority (0).
   //
   // Under usual circumstances, Envoy will only select endpoints for the highest
-  // priority (0). In the event all endpoints for a particular priority are
+  // priority (0). In the event that enough endpoints for a particular priority are
   // unavailable/unhealthy, Envoy will fail over to selecting endpoints for the
-  // next highest priority group.
+  // next highest priority group. Read more at :ref:`priority levels <arch_overview_load_balancing_priority_levels>`.
   //
   // Priorities should range from 0 (highest) to N (lowest) without skipping.
   uint32 priority = 5 [(validate.rules).uint32 = {lte: 128}];

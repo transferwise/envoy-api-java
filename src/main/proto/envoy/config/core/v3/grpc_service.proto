@@ -43,6 +43,12 @@ message GrpcService {
     string authority = 2
         [(validate.rules).string =
              {min_len: 0 max_bytes: 16384 well_known_regex: HTTP_HEADER_VALUE strict: false}];
+
+    // Indicates the retry policy for re-establishing the gRPC stream
+    // This field is optional. If max interval is not provided, it will be set to ten times the provided base interval.
+    // Currently only supported for xDS gRPC streams.
+    // If not set, xDS gRPC streams default base interval:500ms, maximum interval:30s will be applied.
+    RetryPolicy retry_policy = 3;
   }
 
   // [#next-free-field: 9]
@@ -142,7 +148,7 @@ message GrpcService {
 
         // URI of the token exchange service that handles token exchange requests.
         // [#comment:TODO(asraa): Add URI validation when implemented. Tracked by
-        // https://github.com/envoyproxy/protoc-gen-validate/issues/303]
+        // https://github.com/bufbuild/protoc-gen-validate/issues/303]
         string token_exchange_service_uri = 1;
 
         // Location of the target service or resource where the client
