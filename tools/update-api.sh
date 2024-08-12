@@ -29,11 +29,13 @@ pushd "${tmpdir}" >/dev/null
 
 rm -rf "${protodir}"
 
-curl -sL https://github.com/envoyproxy/envoy/archive/${ENVOY_SHA}.tar.gz | tar xz --wildcards '*.proto'
+curl -sL https://github.com/envoyproxy/envoy/archive/${ENVOY_SHA}.tar.gz | tar xz --include '*.proto'
 mkdir -p "${protodir}/envoy"
 cp -r envoy-*/api/envoy/* "${protodir}/envoy"
+mkdir -p "${protodir}/contrib"
+cp -r envoy-*/api/contrib/* "${protodir}/contrib"
 
-curl -sL https://github.com/googleapis/googleapis/archive/${GOOGLEAPIS_SHA}.tar.gz | tar xz --wildcards '*.proto'
+curl -sL https://github.com/googleapis/googleapis/archive/${GOOGLEAPIS_SHA}.tar.gz | tar xz --include '*.proto'
 mkdir -p "${protodir}/google/api"
 mkdir -p "${protodir}/google/api/expr/v1alpha1"
 mkdir -p "${protodir}/google/rpc"
@@ -43,25 +45,25 @@ cp googleapis-*/google/api/expr/v1alpha1/checked.proto "${protodir}/google/api/e
 cp googleapis-*/google/rpc/status.proto "${protodir}/google/rpc"
 
 # Note: uses v... from 1.19
-curl -sL https://github.com/envoyproxy/protoc-gen-validate/archive/v${PGV_VERSION}.tar.gz | tar xz --wildcards '*.proto'
+curl -sL https://github.com/envoyproxy/protoc-gen-validate/archive/v${PGV_VERSION}.tar.gz | tar xz --include '*.proto'
 mkdir -p "${protodir}/validate"
 cp -r protoc-gen-validate-*/validate/* "${protodir}/validate"
 
-curl -sL https://github.com/census-instrumentation/opencensus-proto/archive/v${OPENCENSUS_VERSION}.tar.gz | tar xz --wildcards '*.proto'
+curl -sL https://github.com/census-instrumentation/opencensus-proto/archive/v${OPENCENSUS_VERSION}.tar.gz | tar xz --include '*.proto'
 mkdir -p "${protodir}/opencensus/proto"
 cp -r opencensus-proto-*/src/opencensus/proto/* "${protodir}/opencensus/proto"
 
-curl -sL https://github.com/prometheus/client_model/archive/v${PROMETHEUS_VERSION}.tar.gz | tar xz --wildcards '*.proto'
+curl -sL https://github.com/prometheus/client_model/archive/v${PROMETHEUS_VERSION}.tar.gz | tar xz --include '*.proto'
 mkdir -p "${protodir}/io/prometheus/client/"
 cp client_model-*/io/prometheus/client/metrics.proto "${protodir}/io/prometheus/client/"
 
-curl -sL https://github.com/cncf/xds/archive/${XDS_SHA}.tar.gz | tar xz --wildcards '*.proto'
+curl -sL https://github.com/cncf/xds/archive/${XDS_SHA}.tar.gz | tar xz --include '*.proto'
 mkdir -p "${protodir}/udpa"
 mkdir -p "${protodir}/xds"
 cp -r xds-*/udpa/* "${protodir}/udpa"
 cp -r xds-*/xds/* "${protodir}/xds"
 
-curl -sL https://github.com/open-telemetry/opentelemetry-proto/archive/v${OPENTELEMETRY_VERSION}.tar.gz | tar xz --wildcards '*.proto'
+curl -sL https://github.com/open-telemetry/opentelemetry-proto/archive/v${OPENTELEMETRY_VERSION}.tar.gz | tar xz --include '*.proto'
 mkdir -p "${protodir}/opentelemetry/proto"
 cp -r opentelemetry-proto-*/opentelemetry/proto/* "${protodir}/opentelemetry/proto"
 
