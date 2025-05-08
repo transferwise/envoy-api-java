@@ -49,10 +49,6 @@ curl -sL https://github.com/envoyproxy/protoc-gen-validate/archive/v${PGV_VERSIO
 mkdir -p "${protodir}/validate"
 cp -r protoc-gen-validate-*/validate/* "${protodir}/validate"
 
-curl -sL https://github.com/census-instrumentation/opencensus-proto/archive/v${OPENCENSUS_VERSION}.tar.gz | tar xz --include '*.proto'
-mkdir -p "${protodir}/opencensus/proto"
-cp -r opencensus-proto-*/src/opencensus/proto/* "${protodir}/opencensus/proto"
-
 curl -sL https://github.com/prometheus/client_model/archive/v${PROMETHEUS_VERSION}.tar.gz | tar xz --include '*.proto'
 mkdir -p "${protodir}/io/prometheus/client/"
 cp client_model-*/io/prometheus/client/metrics.proto "${protodir}/io/prometheus/client/"
@@ -66,5 +62,9 @@ cp -r xds-*/xds/* "${protodir}/xds"
 curl -sL https://github.com/open-telemetry/opentelemetry-proto/archive/v${OPENTELEMETRY_VERSION}.tar.gz | tar xz --include '*.proto'
 mkdir -p "${protodir}/opentelemetry/proto"
 cp -r opentelemetry-proto-*/opentelemetry/proto/* "${protodir}/opentelemetry/proto"
+
+curl -sL https://github.com/google/cel-spec/archive/v${CEL_VERSION}.tar.gz | tar xz --include '*.proto'
+mkdir -p "${protodir}/cel/"
+cp -r cel-spec-*/proto/cel/* "${protodir}/cel/"
 
 popd >/dev/null
