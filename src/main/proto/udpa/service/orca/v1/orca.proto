@@ -1,3 +1,7 @@
+// THIS FILE IS DEPRECATED
+// Users should instead use the corresponding proto in the xds tree.
+// No new changes will be accepted here.
+
 syntax = "proto3";
 
 package udpa.service.orca.v1;
@@ -5,12 +9,11 @@ package udpa.service.orca.v1;
 option java_outer_classname = "OrcaProto";
 option java_multiple_files = true;
 option java_package = "com.github.udpa.udpa.service.orca.v1";
+option go_package = "github.com/cncf/xds/go/udpa/service/orca/v1";
 
 import "udpa/data/orca/v1/orca_load_report.proto";
 
 import "google/protobuf/duration.proto";
-
-import "validate/validate.proto";
 
 // See section `Out-of-band (OOB) reporting` of the design document in
 // :ref:`https://github.com/envoyproxy/envoy/issues/6614`.

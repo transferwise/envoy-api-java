@@ -32,14 +32,14 @@ GOOGLEAPIS_DATE=$(find_date "$CURL_OUTPUT" com_google_googleapis)
 PGV_GIT_SHA=$(find_sha "$CURL_OUTPUT" com_envoyproxy_protoc_gen_validate)
 PGV_GIT_DATE=$(find_date "$CURL_OUTPUT" com_envoyproxy_protoc_gen_validate)
 
-PROMETHEUS_SHA=$(find_sha "$CURL_OUTPUT" prometheus_metrics_model)
+PROMETHEUS_VERSION=$(find_sha "$CURL_OUTPUT" prometheus_metrics_model)
 PROMETHEUS_DATE=$(find_date "$CURL_OUTPUT" prometheus_metrics_model)
 
 OPENCENSUS_SHA=$(find_sha "$CURL_OUTPUT" opencensus_proto)
 OPENCENSUS_DATE=$(find_date "$CURL_OUTPUT" opencensus_proto)
 
-UDPA_SHA=$(find_sha "$CURL_OUTPUT" com_github_cncf_udpa)
-UDPA_DATE=$(find_date "$CURL_OUTPUT" com_github_cncf_udpa)
+XDS_SHA=$(find_sha "$CURL_OUTPUT" com_github_cncf_xds)
+XDS_DATE=$(find_date "$CURL_OUTPUT" com_github_cncf_xds)
 
 OPENTELEMETRY_SHA=$(find_sha "$CURL_OUTPUT" opentelemetry_proto)
 OPENTELEMETRY_DATE=$(find_date "$CURL_OUTPUT" opentelemetry_proto)
@@ -52,8 +52,8 @@ ENVOY_SHA=\"$ENVOY_VERSION\"
 # dependencies (source: https://github.com/envoyproxy/envoy/blob/$ENVOY_VERSION/api/bazel/repository_locations.bzl)
 GOOGLEAPIS_SHA=\"$GOOGLEAPIS_SHA\"  # $GOOGLEAPIS_DATE
 PGV_VERSION=\"$PGV_GIT_SHA\"  # $PGV_GIT_DATE
-PROMETHEUS_SHA=\"$PROMETHEUS_SHA\"  # $PROMETHEUS_DATE
+PROMETHEUS_VERSION=\"$PROMETHEUS_VERSION\"  # $PROMETHEUS_DATE
 OPENCENSUS_VERSION=\"$OPENCENSUS_SHA\"  # $OPENCENSUS_DATE
 OPENTELEMETRY_VERSION=\"$OPENTELEMETRY_SHA\"  # $OPENTELEMETRY_DATE
-UDPA_SHA=\"$UDPA_SHA\"  # $UDPA_DATE
+XDS_SHA=\"$XDS_SHA\"  # $XDS_DATE
 "
