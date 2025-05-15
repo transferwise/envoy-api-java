@@ -67,4 +67,8 @@ curl -sL https://github.com/google/cel-spec/archive/v${CEL_VERSION}.tar.gz | tar
 mkdir -p "${protodir}/cel/"
 cp -r cel-spec-*/proto/cel/* "${protodir}/cel/"
 
+curl -sL https://github.com/census-instrumentation/opencensus-proto/archive/v${OPENCENSUS_VERSION}.tar.gz | tar xz --include '*.proto'
+mkdir -p "${protodir}/opencensus/proto"
+cp -r opencensus-proto-*/src/opencensus/proto/* "${protodir}/opencensus/proto"
+
 popd >/dev/null
