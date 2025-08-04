@@ -1,5 +1,5 @@
 # envoy (source: SHA from https://github.com/envoyproxy/envoy)
-ENVOY_SHA="dac139cd497d5c67a31d0944430e814c86ce43f3"
+ENVOY_SHA="6fe1905459ff267a43a8a26d042ae03a8aa7bc98"
 
 # dependencies (source: https://github.com/envoyproxy/envoy/blob/8eef22b927682e9ff6f59cf9f26e440b41219fe6/api/bazel/repository_locations.bzl)
 GOOGLEAPIS_SHA="114a745b2841a044e98cdbb19358ed29fcf4a5f1"  # 2023-01-10
