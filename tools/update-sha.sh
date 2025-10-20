@@ -26,7 +26,7 @@ ENVOY_VERSION=$(find_envoy_sha_from_tag "$1")
 
 CURL_OUTPUT=$(curl -s "https://raw.githubusercontent.com/envoyproxy/envoy/$ENVOY_VERSION/api/bazel/repository_locations.bzl")
 
-GOOGLEAPIS_SHA=$(find_sha "$CURL_OUTPUT" com_google_googleapis)
+GOOGLEAPIS_VERSION=$(find_sha "$CURL_OUTPUT" com_google_googleapis)
 GOOGLEAPIS_DATE=$(find_date "$CURL_OUTPUT" com_google_googleapis)
 
 PGV_GIT_SHA=$(find_sha "$CURL_OUTPUT" com_envoyproxy_protoc_gen_validate)
@@ -38,7 +38,7 @@ PROMETHEUS_DATE=$(find_date "$CURL_OUTPUT" prometheus_metrics_model)
 OPENCENSUS_SHA=$(find_sha "$CURL_OUTPUT" opencensus_proto)
 OPENCENSUS_DATE=$(find_date "$CURL_OUTPUT" opencensus_proto)
 
-XDS_SHA=$(find_sha "$CURL_OUTPUT" com_github_cncf_xds)
+XDS_VERSION=$(find_sha "$CURL_OUTPUT" com_github_cncf_xds)
 XDS_DATE=$(find_date "$CURL_OUTPUT" com_github_cncf_xds)
 
 OPENTELEMETRY_SHA=$(find_sha "$CURL_OUTPUT" opentelemetry_proto)
@@ -50,10 +50,10 @@ echo -n "# Update the versions here and run update-api.sh
 ENVOY_SHA=\"$ENVOY_VERSION\"
 
 # dependencies (source: https://github.com/envoyproxy/envoy/blob/$ENVOY_VERSION/api/bazel/repository_locations.bzl)
-GOOGLEAPIS_SHA=\"$GOOGLEAPIS_SHA\"  # $GOOGLEAPIS_DATE
+GOOGLEAPIS_VERSION=\"$GOOGLEAPIS_VERSION\"  # $GOOGLEAPIS_DATE
 PGV_VERSION=\"$PGV_GIT_SHA\"  # $PGV_GIT_DATE
 PROMETHEUS_VERSION=\"$PROMETHEUS_VERSION\"  # $PROMETHEUS_DATE
 OPENCENSUS_VERSION=\"$OPENCENSUS_SHA\"  # $OPENCENSUS_DATE
 OPENTELEMETRY_VERSION=\"$OPENTELEMETRY_SHA\"  # $OPENTELEMETRY_DATE
-XDS_SHA=\"$XDS_SHA\"  # $XDS_DATE
+XDS_VERSION=\"$XDS_VERSION\"  # $XDS_DATE
 "
