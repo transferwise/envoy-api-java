@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,23 +16,21 @@
 
 syntax = "proto3";
 
-package cel.expr.conformance.test;
+package cel.expr.conformance;
 
 import "cel/expr/checked.proto";
 import "cel/expr/eval.proto";
 import "cel/expr/value.proto";
 
 option cc_enable_arenas = true;
-option go_package = "cel.dev/expr/conformance/test";
+option go_package = "cel.dev/expr/conformance";
 option java_multiple_files = true;
 option java_outer_classname = "SimpleProto";
-option java_package = "dev.cel.expr.conformance.test";
+option java_package = "dev.cel.expr.conformance";
 
 // The format of a simple test file, expected to be stored in text format.
 // A file is the unit of granularity for selecting conformance tests,
 // so tests of optional features should be segregated into separate files.
-//
-// Deprecated: Use cel.expr.conformance.test.Suite
 message SimpleTestFile {
   // Required.  The name of the file.  Should match the filename.
   string name = 1;
@@ -78,9 +76,6 @@ message SimpleTest {
   // Disables the check phase.
   bool disable_check = 5;
 
-  // Disables the evaluate phase.
-  bool check_only = 15;
-
   // The type environment to use for the check phase.
   repeated cel.expr.Decl type_env = 6;
 
@@ -102,9 +97,6 @@ message SimpleTest {
     // *   a floating point NaN should match any NaN.
     cel.expr.Value value = 8;
 
-    // A result and deduced expression type.
-    TypedResult typed_result = 16;
-
     // Matches error evaluation results.
     cel.expr.ErrorSet eval_error = 9;
 
@@ -119,17 +111,7 @@ message SimpleTest {
     // (Using explicit message since oneof can't handle repeated.)
     UnknownSetMatcher any_unknowns = 12;
   }
-  // Next is 17.
-}
-
-// Matches a result along with deduced expression type.
-message TypedResult {
-  // A normal value, which must match the evaluation result exactly
-  // via value equality semantics. This is ignored if the test is `check_only`.
-  cel.expr.Value result = 1;
-
-  // The deduced type of the expression as reported by the checker.
-  cel.expr.Type deduced_type = 2;
+  // Next is 15.
 }
 
 // Matches error results from Eval.

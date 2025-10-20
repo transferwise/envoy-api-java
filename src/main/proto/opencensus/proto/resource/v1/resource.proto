@@ -1,4 +1,4 @@
-// Copyright 2015 Google LLC
+// Copyright 2018, OpenCensus Authors
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,18 +14,22 @@
 
 syntax = "proto3";
 
-package google.api;
+package opencensus.proto.resource.v1;
 
-import "google/api/http.proto";
-import "google/protobuf/descriptor.proto";
+option go_package = "github.com/census-instrumentation/opencensus-proto/gen-go/resource/v1";
 
-option go_package = "google.golang.org/genproto/googleapis/api/annotations;annotations";
 option java_multiple_files = true;
-option java_outer_classname = "AnnotationsProto";
-option java_package = "com.google.api";
-option objc_class_prefix = "GAPI";
+option java_package = "io.opencensus.proto.resource.v1";
+option java_outer_classname = "ResourceProto";
 
-extend google.protobuf.MethodOptions {
-  // See `HttpRule`.
-  HttpRule http = 72295728;
+option ruby_package = "OpenCensus::Proto::Resource::V1";
+
+// Resource information.
+message Resource {
+
+  // Type identifier for the resource.
+  string type = 1;
+
+  // Set of labels that describe the resource.
+  map<string,string> labels = 2;
 }

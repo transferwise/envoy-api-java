@@ -19,3 +19,4 @@ The `tools` directory follows https://github.com/envoyproxy/java-control-plane/c
 8. You may need to add or remove protos depending on the failures and you would want to refer to the bazel dependencies file to figure out what failed, finally udpate the scripts to have the change.
 
 Note: until we catch up with Envoy head version, slight adjustments might be needed for these scripts, towards matching upstream more closely.
+https://github.com/envoyproxy/envoy/blob/6fe1905459ff267a43a8a26d042ae03a8aa7bc98/api/bazel/repository_locations.bzl
