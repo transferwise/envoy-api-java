@@ -44,8 +44,8 @@ tasks.withType(Javadoc).configureEach {
     options.addStringOption('Xdoclint:none', '-quiet')
 }
 
-def grpcVersion = '1.62.2'
-def protobufVersion = '3.25.6'
+def grpcVersion = '1.79.0'
+def protobufVersion = '3.25.9'
 def protocVersion = protobufVersion
 
 dependencies {
