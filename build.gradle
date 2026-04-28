@@ -164,7 +164,7 @@ task tagRelease {
             grgit.push(refsOrSpecs: ["v$version"])
         }
         catch (RefAlreadyExistsException ignored) {
-            logger.warn("Tag v$version already exists.")
+            throw new GradleException("Tag v$version already exists. Bump the version in gradle.properties before tagging again.")
         }
     }
 }
