@@ -22,8 +22,6 @@ jobs:
         run: apt-get update && apt-get install -y git
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-tags: true
       - name: "Validate version tag doesn't exist"
         run: GRADLE_USER_HOME=$HOME/.gradle ./gradlew validateVersion --console=plain --no-daemon
       - name: "Gradle cache"
