@@ -22,6 +22,8 @@ jobs:
         run: apt-get update && apt-get install -y git
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-tags: true
       - name: "Validate version tag doesn't exist"
         run: |
           VERSION=$(grep '^version=' gradle.properties | cut -d'=' -f2)
