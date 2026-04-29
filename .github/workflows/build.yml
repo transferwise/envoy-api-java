@@ -28,7 +28,8 @@ jobs:
         run: |
           VERSION=$(grep '^version=' gradle.properties | cut -d'=' -f2)
           TAG="v${VERSION}"
-          if git ls-remote --tags origin | grep -q "refs/tags/${TAG}$"; then
+          REPO_URL="https://github.com/${{ github.repository }}"
+          if git ls-remote --tags "${REPO_URL}" | grep -q "refs/tags/${TAG}$"; then
             echo "============================================="
             echo "ERROR: Tag ${TAG} already exists!"
             echo ""
