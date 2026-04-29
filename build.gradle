@@ -168,3 +168,21 @@ task tagRelease {
         }
     }
 }
+
+task validateVersion {
+    doLast {
+        def tagName = "v$version"
+        def remoteTags = grgit.lsremote(tags: true).keySet().collect { it.toString() }
+        def remoteHasTag = remoteTags.any { it.endsWith("/${tagName}") || it == tagName }
+        if (remoteHasTag) {
+            throw new GradleException("""
+                |=============================================
+                | ERROR: Tag ${tagName} already exists!
+                |
+                | Please bump the version in gradle.properties
+                |=============================================
+            """.stripMargin())
+        }
+        logger.lifecycle("✓ Version ${version} is valid (tag ${tagName} does not exist yet)")
+    }
+}

@@ -25,19 +25,7 @@ jobs:
         with:
           fetch-tags: true
       - name: "Validate version tag doesn't exist"
-        run: |
-          VERSION=$(grep '^version=' gradle.properties | cut -d'=' -f2)
-          TAG="v${VERSION}"
-          REPO_URL="https://github.com/${{ github.repository }}"
-          if git ls-remote --tags "${REPO_URL}" | grep -q "refs/tags/${TAG}$"; then
-            echo "============================================="
-            echo "ERROR: Tag ${TAG} already exists!"
-            echo ""
-            echo "Please bump the version in gradle.properties"
-            echo "============================================="
-            exit 1
-          fi
-          echo "✓ Version ${VERSION} is valid (tag ${TAG} does not exist yet)"
+        run: GRADLE_USER_HOME=$HOME/.gradle ./gradlew validateVersion --console=plain --no-daemon
       - name: "Gradle cache"
         uses: actions/cache@v4
         with:
