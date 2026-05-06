@@ -42,6 +42,9 @@ tasks.withType(Jar).configureEach {
 
 tasks.withType(Javadoc).configureEach {
     options.addStringOption('Xdoclint:none', '-quiet')
+    options.encoding = 'UTF-8'
+    options.charSet = 'UTF-8'
+    options.docEncoding = 'UTF-8'
 }
 
 def grpcVersion = '1.79.0'
