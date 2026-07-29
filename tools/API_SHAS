@@ -1,11 +1,11 @@
 # envoy (source: SHA from https://github.com/envoyproxy/envoy)
-ENVOY_SHA="9a0cdcadabcb7baa2348afa1178e083f8d0fe2d7"
+ENVOY_SHA="f97695a50e11f5ff6719e129a466bf9204b64a7f"
 
-# dependencies (source: https://github.com/envoyproxy/envoy/blob/9a0cdcadabcb7baa2348afa1178e083f8d0fe2d7/api/bazel/repository_locations.bzl)
+# dependencies (source: https://github.com/envoyproxy/envoy/blob/f97695a50e11f5ff6719e129a466bf9204b64a7f/api/bazel/repository_locations.bzl)
 GOOGLEAPIS_VERSION="fd52b5754b2b268bc3a22a10f29844f206abb327"
-PGV_VERSION="1.0.4"
+PGV_VERSION="1.3.0"
 PROMETHEUS_VERSION="0.6.2"
-OPENTELEMETRY_VERSION="1.7.0"
-XDS_VERSION="2ac532fd44436293585084f8d94c6bdb17835af0"
-CEL_VERSION="0.24.0"
+OPENTELEMETRY_VERSION="1.9.0"
+XDS_VERSION="8bfbf64dc13ee1a570be4fbdcfccbdd8532463f0"
+CEL_VERSION="0.25.1"
 OPENCENSUS_VERSION=""
