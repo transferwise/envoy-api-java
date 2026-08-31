@@ -21,11 +21,11 @@ jobs:
       - name: "Install packages"
         run: apt-get update && apt-get install -y git
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: "Validate version tag doesn't exist"
         run: GRADLE_USER_HOME=$HOME/.gradle ./gradlew validateVersion --console=plain --no-daemon
       - name: "Gradle cache"
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             ~/.gradle
